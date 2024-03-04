@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  my_app_db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: "myapp_db"
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "admin"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ../2. Init Database:/docker-entrypoint-initdb.d
+      - myapp_db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  myapp_db-data:
