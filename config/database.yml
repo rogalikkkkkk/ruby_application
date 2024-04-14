@@ -5,7 +5,6 @@ default: &default
   host: localhost
   reaping_frequency: 30
   username: dmizha
-#  password: dmizha #<-- which you have defiend while installing postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
