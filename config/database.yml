@@ -1,21 +1,25 @@
 default: &default
   adapter: postgresql
-  encoding: unicode
+  encoding: UTF8
+  timeout: 5000
   host: localhost
+  reaping_frequency: 30
   username: dmizha
-  password: dmizha #<-- which you have defiend while installing postgresql
-  # pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#  password: dmizha #<-- which you have defiend while installing postgresql
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
-  database: rubydb
+  database: development
+  password: <%= Rails.application.credentials.database[:user_pswd] %>
 
 test:
   <<: *default
-  database: rubydb
+  database: test
+  password: <%= Rails.application.credentials.database[:user_pswd] %>
 
 production:
   <<: *default
-  database: rubydb
+  database: production
   username: dmizha
-  password: dmizha
+  password: <%= Rails.application.credentials.database[:user_pswd] %>
