@@ -7,3 +7,33 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+Image.delete_all
+Image.reset_pk_sequence
+Image.create([
+
+               { name: 'Honda NSX NA2', file: 'honda.jpg', theme_id: 1 },
+               { name: 'Porsche 918 Spyder', file: 'porsche.jpg', theme_id: 2 },
+               { name: 'Rimac Nevera', file: 'rimac.jpg', theme_id: 3 },
+               { name: 'Pagani Zonda', file: 'pagani.jpg', theme_id: 4 },
+             ])
+
+Theme.delete_all
+Theme.reset_pk_sequence
+Theme.create([
+
+               { name: "-----" }, # 1 Нет темы
+               { name: "Этот автомобиль соответствует визуально классу гиперкаров?" }, # 2
+               { name: "Этот автомобиль соответствует визуально классу гиперкаров?" }, # 3
+               { name: "Этот автомобиль соответствует визуально классу ультракаров?" }, # 4
+             ])
+
+User.delete_all
+User.reset_pk_sequence
+User.create([
+
+              { name: "Example User", email: "example@railstutorial.org" }, ### TODO: Добавить в таблицу пользователей столбцы с паролем и подтверждением?
+            # {name: "Example User", email: "example@railstutorial.org", password: "222222", password_confirmation: "222222"},
+
+            ])
+
