@@ -47,6 +47,32 @@ gem 'bcrypt'
 
 gem 'active_model_serializers'
 
+gem 'haml'
+
+gem 'haml-rails'
+
+gem 'jquery-ui-rails'
+
+gem 'rails-asset-jqueryui'
+
+gem 'sass-rails'
+
+gem 'bootstrap-sass'
+
+gem 'will_paginate'
+
+gem 'kaminari'
+
+gem 'font-awesome-sass'
+
+gem 'font-awesome-rails'
+
+gem 'jquery-rails'
+
+gem 'turbolinks'
+
+gem 'html2haml'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
