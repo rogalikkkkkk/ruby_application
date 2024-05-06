@@ -1,0 +1,15 @@
+- content_for(:title, "Sign in")
+
+%h1= t('.sign_in')
+
+.row
+  .span6.offset3
+    = form_for(:session, url: sessions_path) do |f|
+      = f.label "Email"
+      = f.text_field :email
+      = f.label t('.password')
+      = f.password_field :password
+      = f.submit t('.sign_in'), class: "btn btn-large btn-primary"
+    %p.sign_up_link
+      = t('.new_user?')
+      #{link_to t('.sign_up'), signup_path}

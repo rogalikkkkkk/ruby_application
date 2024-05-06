@@ -1,8 +1,8 @@
+/* app/assets/javascripts/application.js */
 //= require_self
-//= require jquery
-//= require jquery-ui
-//= require jquery_ujs
-//= require turbolinks
+
+//= require jquery3
+//= require popper
 //= require bootstrap
 
 //= require_tree .

@@ -1,0 +1,35 @@
+.row.bloc
+  .col-md-12
+    .preamble
+      %h2 Review this images from 1 to 100
+  .col-md-8
+    .image_display
+      .row.image
+        .col-md-12
+          .img-center{:title => "Default image"}
+            %img{:alt => "Default Image", :src => asset_path(@default_image_name), :title => "Default image", :style => "width:100%; height:100%;" }
+          .image_user_value{:title => "Expert value"}
+
+        .col-md-6
+          .img-left-side
+            %h3{:title => "list to previous image"}
+              -# %button.fa.fa-chevron-circle-left.strong
+              %button.btn.btn-default{type: "submit", name: "submission" } Previous image
+
+
+        .col-md-6
+          .img-right-side
+            %h3{:title => "list to next image", :onclick => "nextImage(); return false"}
+              -# %button.fa.fa-chevron-circle-right
+              %button.btn.btn-default{type: "submit", name: "submission" } Next image
+
+  .col-md-4
+    .col-md-12
+      %h2.up-theme{:title => "theme_name"} #{@selected_theme}
+
+    .left_controls
+      .select_theme
+      = render 'work/button_theme_select' #, locale: @current_locale
+
+    .col-md-12
+      %h2.up{:title => "Image file name"} #{@selected_image_name}

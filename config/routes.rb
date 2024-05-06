@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :images
   resources :values
   resources :users
+  resources :sessions
   get 'main/index'
   get 'main/help'
   get 'main/contacts'
@@ -19,4 +20,7 @@ Rails.application.routes.draw do
   match 'choose_theme', to: 'work#choose_theme', via: :get
   match 'display_theme', to: 'work#display_theme', via: :post
   get 'api/next_image' => 'api#next_image'
+  match 'signup',   to: 'users#new',            via: 'get'
+  match 'signin',   to: 'sessions#new',         via: 'get'
+  match 'signout',  to: 'sessions#destroy',     via: 'get'
 end

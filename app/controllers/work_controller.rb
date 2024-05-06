@@ -1,5 +1,5 @@
 class WorkController < ApplicationController
-
+  skip_after_action :verify_same_origin_request
   include WorkHelper
 
   def show_image(theme_id, image_index)
@@ -58,9 +58,9 @@ class WorkController < ApplicationController
     @current_locale = I18n.locale
     @default_image_name = 'honda.jpg'
     session[:selected_theme_id] = @selected_theme # to display nothing
-    theme_id = 2
+    theme_id = 1
     data = show_image(theme_id, 0)
-    @image_data = image_data(theme_id, data)
+    image_data(theme_id, data)
   end
 
   def choose_theme
@@ -89,7 +89,7 @@ class WorkController < ApplicationController
     end
     session[:selected_theme_id] = theme_id
     image_data(theme, data)
-  end
 
+  end
 
 end

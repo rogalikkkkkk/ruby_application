@@ -1,17 +1,21 @@
-= form_with(model: user) do |form|
-  - if user.errors.any?
-    %div{:style => "color: red"}
-      %h2
-        = pluralize(user.errors.count, "error")
-        prohibited this user from being saved:
-      %ul
-        - user.errors.each do |error|
-          %li= error.full_message
-  %div
-    = form.label :name, style: "display: block"
-    = form.text_field :name
-  %div
-    = form.label :email, style: "display: block"
-    = form.text_field :email
-  %div
-    = form.submit
+= form_for @user do |f|
+  - if @user.errors.any?
+    %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+    %ul
+      - @user.errors.full_messages.each do |msg|
+        %li= msg
+  .field
+    = f.label t('.name')
+    = f.text_field :name
+  .field
+    = f.label "Email"
+    = f.text_field :email
+  .field
+    = f.label t('.password')
+    = f.password_field :password
+  .field
+    = f.label t('.password_confirmation')
+    = f.password_field :password_confirmation
+
+  .actions
+    = f.submit t(".create_account"), class: "btn btn-large btn-primary"

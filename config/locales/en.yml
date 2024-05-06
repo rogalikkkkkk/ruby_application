@@ -27,5 +27,33 @@
 #       "yes": yup
 #       enabled: "ON"
 
+#en:
+#  hello: "Hello world"
 en:
-  hello: "Hello world"
+  logo_title: "Experteese in Ruby_on_Rails"
+  home: "Home"
+  help: "Help"
+  sign_in: "Sign in"
+  sign_up: "Sign up"
+  sign_out: "Sign out"
+  person: "Me"
+  profile: "My page"
+  settings: "Settings"
+  password: "Password"
+  sessions:
+    new:
+      password: "Password"
+      sign_in: "Sign in"
+      new_user?: "Are you new here?"
+      sign_up: "Sign up"
+  users:
+    form:
+      name: "Name"
+      password: "Password"
+      password_confirmation: "Password confirmation"
+      create_account: "Create account"
+  shared:
+    header:
+      home: "Home"
+      sign_in: "Sign in"
+      sign_out: "Sign out"

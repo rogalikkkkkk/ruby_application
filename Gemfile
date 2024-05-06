@@ -57,7 +57,7 @@ gem 'rails-asset-jqueryui'
 
 gem 'sass-rails'
 
-gem 'bootstrap-sass'
+gem 'bootstrap'
 
 gem 'will_paginate'
 

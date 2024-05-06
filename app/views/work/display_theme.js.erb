@@ -22,13 +22,11 @@ if (selectedTheme == "Выберите тему для оценки" ||
 
 $('.image_display h2.up-theme').append().html(selectedTheme);
 
-//restore button
-$('.select_theme').empty().html("<%= j render
-'work/button_theme_select' -%>");
+$('.select_theme').empty().html("<%= j render 'work/button_theme_select' -%>");
 
 // get data from controller
 var imageCurrentIndex = '<%= @image_data[:index] %>';
-//var firstThemeImagesName =
+var firstThemeImagesName =
 JSON.parse(firstThemeImages)["name"];
 var oneImageName = '<%= @image_data[:name] %>';
 var oneImageFile = '<%= @image_data[:file] %>';
@@ -45,7 +43,7 @@ $('.image_display h2.up').append().html(oneImageName);
 
 // show image
 var pathImage = "assets/pictures/" + oneImageFile;
-// $('.img-center').html('<img alt="Selected Image" src="' + pathImage + '"/>');
+ $('.img-center').html('<img alt="Selected Image" src="' + pathImage + '"/>');
 $(".img-center").attr({title: "Selected image"});
 $(".img-center img").attr({alt: "Selected Image", src: pathImage, title: "Selected image"});
 
@@ -67,7 +65,7 @@ $('.img-right-side').click(function (event) {       /// TODO: доделать
         oneImageFile = data_return.file;
         oneImageId = data_return.image_id;
         $('.image_display h2.up').append().html(oneImageName);
-        var pathImage = "assets/pictures/" + oneImageFile;
+        var pathImage = "assets/images/" + oneImageFile;
         $(".img-center").attr({title: "Selected image"});
         $(".img-center img").attr({
             alt: "Selected Image", src:

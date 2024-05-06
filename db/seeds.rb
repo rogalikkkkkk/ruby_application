@@ -8,18 +8,10 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-Image.delete_all
-Image.reset_pk_sequence
-Image.create([
+Image.destroy_all
+Theme.destroy_all
+User.destroy_all
 
-               { name: 'Honda NSX NA2', file: 'honda.jpg', theme_id: 1 },
-               { name: 'Porsche 918 Spyder', file: 'porsche.jpg', theme_id: 2 },
-               { name: 'Rimac Nevera', file: 'rimac.jpg', theme_id: 3 },
-               { name: 'Pagani Zonda', file: 'pagani.jpg', theme_id: 4 },
-             ])
-
-Theme.delete_all
-Theme.reset_pk_sequence
 Theme.create([
 
                { name: "-----" }, # 1 Нет темы
@@ -28,8 +20,15 @@ Theme.create([
                { name: "Этот автомобиль соответствует визуально классу ультракаров?" }, # 4
              ])
 
-User.delete_all
-User.reset_pk_sequence
+Image.create([
+
+               { name: 'Honda NSX NA2', file: 'honda.jpg', theme_id: 1 },
+               { name: 'Porsche 918 Spyder', file: 'porsche.jpg', theme_id: 2 },
+               { name: 'Rimac Nevera', file: 'rimac.jpg', theme_id: 3 },
+               { name: 'Pagani Zonda', file: 'pagani.jpg', theme_id: 4 },
+             ])
+
+
 User.create([
 
               { name: "Example User", email: "example@railstutorial.org" }, ### TODO: Добавить в таблицу пользователей столбцы с паролем и подтверждением?

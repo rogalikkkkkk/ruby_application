@@ -1,0 +1,28 @@
+ru:
+  header:
+    logo_title: "Experteese на Ruby_on_Rails"
+    home: "Главная"
+    help: "Помощь"
+    sign_in: "Войти"
+    sign_up: "Зарегистрироваться"
+    sign_out: "Выйти"
+    person: "Я"
+    profile: "Моя страница"
+    settings: "Настройки"
+  sessions:
+    new:
+      password: "Пароль"
+      sign_in: "Войти"
+      new_user?: "Вы здесь впервые?"
+      sign_up: "Зарегистрироваться"
+  users:
+    form:
+      name: "Имя"
+      password: "Пароль"
+      password_confirmation: "Подтверждение пароля"
+      create_account: "Создать аккаунт"
+  shared:
+    header:
+      home: "Домой"
+      sign_in: "Войти"
+      sign_out: "Выйти"

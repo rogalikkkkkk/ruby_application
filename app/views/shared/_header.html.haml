@@ -1,8 +1,7 @@
 %body
   %header
     %ul
-      %li
-        %a{:href => "/main/index"} Main
+      %li= link_to t('.home'), root_path
       %li
         %a{:href => "/main/contacts"} Contacts
       %li
@@ -11,3 +10,42 @@
         %a{:href => "/main/about"} About
       %li
         %a{:href => "http://rubyonrails.org"} Ruby on Rails Website
+
+      - if signed_in?
+        %li= link_to "Users", '#'
+        %li= link_to t('.sign_out'), signout_path
+        %li.logged
+          -# = {current_user.email}
+          -# = gravatar_for current_user
+        -# %li #fat-menu.dropdown
+        -#   %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        -#     %p
+        -#       = "Person"
+        -#       -# = t('.person')
+        -#       %b.caret
+        -#   %ul.dropdown-menu
+        -#     %li= link_to "Profile", current_user
+        -#     %li= link_to "Setings", '#'
+        -#     -# %li= link_to t('.profile'), current_user
+        -#     -# %li= link_to t('.settings'), '#'
+        -#     %li.divider
+        -#     %li
+        -#       = link_to "Sign put", signout_path, method: "delete"
+              -# = link_to t('.sign_out'), signout_path, method: "delete"
+      - else
+        %li= link_to t('.sign_in'), signin_path
+
+    .locale
+      .ru_link
+        = link_to image_tag("rus.png", alt: "",  style: "width: 30px; margin-right: 5px", title: "Русский" ), locale: :ru
+      .en_link
+        = link_to image_tag("en.png", alt: "",  style: "width: 30px; margin-right: 5px", title: "English"), locale: :en
+      %b
+        = I18n.locale
+
+-# %nav
+-#   %ul.nav.navbar-nav.pull-right
+-#     %li= link_to t('.home'), root_path
+-#     -# %li= link_to "Help", help_path
+-#     -# %li= link_to t('.help'), help_path
+

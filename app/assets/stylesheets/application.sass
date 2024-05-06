@@ -1,17 +1,60 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_self
- *= require font-awesome
- *= require_tree .
- */
+@import 'bootstrap'
 
+header
+  background-color: black
+  margin: 0
+  padding: 10px 0 10px 0
+  display: flex
+  justify-content: space-between
+
+header ul
+  min-width: 80%
+  display: flex
+  justify-content: space-between
+  margin-bottom: 0
+
+header ul li
+  display: inline
+  padding: 3px
+
+header .locale
+  display: flex
+  justify-content: center
+  margin-right: 30px
+
+header .locale b
+  color: darkolivegreen
+
+header a
+  text-decoration: none
+  color: white
+
+footer
+  display: flex
+  justify-content: center
+
+.image_display
+  padding: 10px
+
+.img-left-side h3, .img-right-side h3
+  display: flex
+  justify-content: center
+  padding: 8px
+  margin-bottom: 0
+
+.bloc
+  margin: 0
+
+.preamble
+  display: flex
+  justify-content: center
+  padding: 15px
+
+.left_controls
+  display: flex
+  justify-content: center
+  padding: 15px
+
+.up, .up-theme
+  text-align: center
+  padding: 15px
