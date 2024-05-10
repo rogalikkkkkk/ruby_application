@@ -54,8 +54,7 @@ module WorkImage
   def show_image(theme_id, image_index)
     theme_images = Image.theme_images(theme_id)
 
-    # current_user_id = current_user.id
-    current_user_id = 0
+    current_user_id = current_user.id
 
     logger.info "In show_image: current_user_id = #{current_user_id.inspect} "
 
@@ -64,14 +63,11 @@ module WorkImage
     image_id = one_image_attr["id"]
     logger.info "In show_image: image_id = #{image_id.inspect} "
 
-    # user_valued, value =
-    #   Value.user_valued_exists(current_user_id, image_id)
-    # # 1/0 # true/false .exists?
-    # logger.info "In show_image: user_valued =
-    # 		#{user_valued.inspect} "
+    user_valued, value =
+      Value.user_valued_exists(current_user_id, image_id)
+    logger.info "In show_image: user_valued = #{user_valued.inspect}"
 
     values_qty = Value.all.count.round
-    user_valued = 1
 
     if user_valued == 1
       common_ave_value = Image.find(image_id).ave_value

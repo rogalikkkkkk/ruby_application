@@ -1,5 +1,7 @@
 // get data from controller		контроль в консоли
-var imageData = '<%= raw @image_data %>';
+<% helpers = ActionController::Base.helpers %>
+
+var imageData = <%= @image_data.to_json.to_s.html_safe %>;
 console.log("IN display_theme: @image_data = " + imageData);
 var valuesQty = '<%= @image_data[:values_qty] %>';
 console.log("IN display_theme: valuesQty = " + valuesQty);
@@ -8,9 +10,7 @@ $('.left_controls span.total_values h2.total').append().html(valuesQty);
 // show theme
 var selectedTheme = '<%= @image_data[:theme] %>';
 
-if (selectedTheme == "Выберите тему для оценки" ||
-    selectedTheme == "Select theme to leave your answer" ||
-    selectedTheme == "") {
+if (selectedTheme == "Выберите тему для оценки" || selectedTheme == "Select theme to leave your answer") {
     $('.img-left-side').css({"display": "none"});
     $('.img-right-side').css({"display": "none"});
     $('.image .image_display .image_diag').css({"display": "none"});
@@ -22,12 +22,11 @@ if (selectedTheme == "Выберите тему для оценки" ||
 
 $('.image_display h2.up-theme').append().html(selectedTheme);
 
-$('.select_theme').empty().html("<%= j render 'work/button_theme_select' -%>");
+//$('.select_theme').empty().html("<%= j render 'work/button_theme_select' -%>");
 
 // get data from controller
 var imageCurrentIndex = '<%= @image_data[:index] %>';
-var firstThemeImagesName =
-JSON.parse(firstThemeImages)["name"];
+var firstThemeImagesName = '<%= @image_data[:name] %>';
 var oneImageName = '<%= @image_data[:name] %>';
 var oneImageFile = '<%= @image_data[:file] %>';
 console.log("3e IN display_theme: oneImageFile = " +
@@ -42,8 +41,8 @@ var selectedThemeId = '<%= @image_data[:theme_id] %>';
 $('.image_display h2.up').append().html(oneImageName);
 
 // show image
-var pathImage = "assets/pictures/" + oneImageFile;
- $('.img-center').html('<img alt="Selected Image" src="' + pathImage + '"/>');
+var pathImage = "<%= helpers.image_path(@image_data[:file]) %>"
+$('.img-center').html('<img alt="Selected Image" src="' + pathImage + '"/>');
 $(".img-center").attr({title: "Selected image"});
 $(".img-center img").attr({alt: "Selected Image", src: pathImage, title: "Selected image"});
 
@@ -65,7 +64,7 @@ $('.img-right-side').click(function (event) {       /// TODO: доделать
         oneImageFile = data_return.file;
         oneImageId = data_return.image_id;
         $('.image_display h2.up').append().html(oneImageName);
-        var pathImage = "assets/images/" + oneImageFile;
+        var pathImage = oneImageFile;
         $(".img-center").attr({title: "Selected image"});
         $(".img-center img").attr({
             alt: "Selected Image", src:
@@ -75,4 +74,35 @@ $('.img-right-side').click(function (event) {       /// TODO: доделать
         .fail(function (data_return) {
             console.log("error: data_return = " + data_return);
         });
+});
+
+
+$('.img-left-side').click(function (event) {       /// TODO: доделать
+    event.stopImmediatePropagation();
+    $.ajax({
+        type: "get",
+        url: "api/prev_image",
+        data: {
+            index: imageCurrentIndex,
+            theme_id: selectedThemeId,
+            length: themeImagesSize
+        },
+        dataType: 'json'
+    }).done(function (data_return) {
+        console.log("success:  " + data_return.notice);
+        imageCurrentIndex = data_return.new_image_index;
+        oneImageName = data_return.name;
+        oneImageFile = data_return.file;
+        oneImageId = data_return.image_id;
+        $('.image_display h2.up').append().html(oneImageName);
+        var pathImage = oneImageFile;
+        $(".img-center").attr({title: "Selected image"});
+        $(".img-center img").attr({
+            alt: "Selected Image", src:
+            pathImage, title: "Selected image"
+        });
+    })
+      .fail(function (data_return) {
+          console.log("error: data_return = " + data_return);
+      });
 });

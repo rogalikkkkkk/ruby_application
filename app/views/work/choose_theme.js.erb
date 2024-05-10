@@ -4,6 +4,7 @@ $('.img-right-side').css({"display": "none"});
 
 // to check whether the target is the content-area itself or a child of the content-area.
 
+
 $(document).click(function (e) {
     if ($(e.target).is(".select_theme") ||
         $(e.target).closest(".select_theme").length) {
@@ -12,7 +13,7 @@ $(document).click(function (e) {
         console.log(": In doc.click = OUT side content area");
         $('.form_select').css({"display": "none"});
 
-        $('.select_theme').empty().html("<%= j render 'work/button_theme_select' -%>");
+//        $('.select_theme').empty().html("<%= j render 'work/button_theme_select' -%>");
     }
 });
 $('.select_theme').empty().html("<%= j render 'choose_theme_from_arr' -%>");
