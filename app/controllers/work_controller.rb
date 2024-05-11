@@ -8,7 +8,7 @@ class WorkController < ApplicationController
   def index
     @images_count = Image.all.count
     @selected_theme = "Select theme to leave your answer"
-    @selected_image_name = 'honda.jpg'
+    @selected_image_name = 'Honda NSX NA2'
     @values_qty = Value.all.count
     @current_locale = I18n.locale
     @themes = Theme.all.pluck(:name)

@@ -29,7 +29,26 @@
 
     .left_controls
       .select_theme
-      = render 'work/button_theme_select' #, locale: @current_locale
+        = render 'work/button_theme_select' #, locale: @current_locale
 
     .col-md-12
       %h2.up{:title => "Image file name"} #{@selected_image_name}
+
+    .col-md-12
+      .image_diag
+        #chosen_value 50
+        %h2.down{:title => "Value scale"} = 'Set value'
+        %button.button__results.save{:title => "Save image diag results"}
+          %a{"data-remote" => "true", :format => "js", :href => "#", :title => "Save image diag results"} = 'Save value'
+
+        .row.percentage
+          .col-md-6
+            %p.left 5%
+          .col-md-6
+            %p.right 100%
+
+        #slider
+          %input.slide#slide{:max => "100", :min => "5", :value => "50",
+                           :onchange => "updateSlider(this.value)",
+                           :step => "5", :type => "range"}
+        %br

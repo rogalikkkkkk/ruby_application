@@ -13,7 +13,7 @@ $(document).click(function (e) {
         console.log(": In doc.click = OUT side content area");
         $('.form_select').css({"display": "none"});
 
-//        $('.select_theme').empty().html("<%= j render 'work/button_theme_select' -%>");
+        $('.select_theme').empty().html("<%= j render 'work/button_theme_select' -%>");
     }
 });
 $('.select_theme').empty().html("<%= j render 'choose_theme_from_arr' -%>");

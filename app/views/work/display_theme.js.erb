@@ -5,10 +5,12 @@ var imageData = <%= @image_data.to_json.to_s.html_safe %>;
 console.log("IN display_theme: @image_data = " + imageData);
 var valuesQty = '<%= @image_data[:values_qty] %>';
 console.log("IN display_theme: valuesQty = " + valuesQty);
+var selectedTheme = '<%= @image_data[:theme] %>';
+console.log("IN display_theme: themeName = " + selectedTheme);
 $('.left_controls span.total_values h2.total').append().html(valuesQty);
 
 // show theme
-var selectedTheme = '<%= @image_data[:theme] %>';
+//var selectedTheme = '<%= @image_data[:theme] %>';
 
 if (selectedTheme == "Выберите тему для оценки" || selectedTheme == "Select theme to leave your answer") {
     $('.img-left-side').css({"display": "none"});
@@ -20,9 +22,9 @@ if (selectedTheme == "Выберите тему для оценки" || selected
     $('.image .image_display .image_diag').css({"display": "block"});
 }
 
-$('.image_display h2.up-theme').append().html(selectedTheme);
+$('h2.up-theme').append().html(selectedTheme);
 
-//$('.select_theme').empty().html("<%= j render 'work/button_theme_select' -%>");
+$('.select_theme').empty().html("<%= j render 'work/button_theme_select' -%>");
 
 // get data from controller
 var imageCurrentIndex = '<%= @image_data[:index] %>';
@@ -38,7 +40,7 @@ var selectedThemeId = '<%= @image_data[:theme_id] %>';
 
 
 // show name of image
-$('.image_display h2.up').append().html(oneImageName);
+$('h2.up').append().html(oneImageName);
 
 // show image
 var pathImage = "<%= helpers.image_path(@image_data[:file]) %>"
@@ -46,7 +48,7 @@ $('.img-center').html('<img alt="Selected Image" src="' + pathImage + '"/>');
 $(".img-center").attr({title: "Selected image"});
 $(".img-center img").attr({alt: "Selected Image", src: pathImage, title: "Selected image"});
 
-$('.img-right-side').click(function (event) {       /// TODO: доделать
+$('.img-right-side').click(function (event) {
     event.stopImmediatePropagation();
     $.ajax({
         type: "get",
@@ -63,7 +65,7 @@ $('.img-right-side').click(function (event) {       /// TODO: доделать
         oneImageName = data_return.name;
         oneImageFile = data_return.file;
         oneImageId = data_return.image_id;
-        $('.image_display h2.up').append().html(oneImageName);
+        $('h2.up').append().html(oneImageName);
         var pathImage = oneImageFile;
         $(".img-center").attr({title: "Selected image"});
         $(".img-center img").attr({
@@ -77,7 +79,7 @@ $('.img-right-side').click(function (event) {       /// TODO: доделать
 });
 
 
-$('.img-left-side').click(function (event) {       /// TODO: доделать
+$('.img-left-side').click(function (event) {
     event.stopImmediatePropagation();
     $.ajax({
         type: "get",
@@ -94,7 +96,7 @@ $('.img-left-side').click(function (event) {       /// TODO: доделать
         oneImageName = data_return.name;
         oneImageFile = data_return.file;
         oneImageId = data_return.image_id;
-        $('.image_display h2.up').append().html(oneImageName);
+        $('h2.up').append().html(oneImageName);
         var pathImage = oneImageFile;
         $(".img-center").attr({title: "Selected image"});
         $(".img-center img").attr({
