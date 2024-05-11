@@ -29,26 +29,38 @@
 
     .left_controls
       .select_theme
-        = render 'work/button_theme_select' #, locale: @current_locale
+        = render 'work/button_theme_select'
 
     .col-md-12
       %h2.up{:title => "Image file name"} #{@selected_image_name}
 
     .col-md-12
-      .image_diag
-        #chosen_value 50
-        %h2.down{:title => "Value scale"} = 'Set value'
-        %button.button__results.save{:title => "Save image diag results"}
-          %a{"data-remote" => "true", :format => "js", :href => "#", :title => "Save image diag results"} = 'Save value'
+      %span.user_value{:style => "display: none"}
+        = "User value"
+        %h2.value{:title => "User value"}
 
-        .row.percentage
-          .col-md-6
-            %p.left 5%
-          .col-md-6
-            %p.right 100%
+      %span.common_value{:style => "display: none"}
+        = "Common value"
+        %h2.common{:title => "Common value"}
+      %span.total_values
+        = "Total values"
+        %h2.total{:title => "Total values"} #{@values_qty.round}
 
-        #slider
-          %input.slide#slide{:max => "100", :min => "5", :value => "50",
-                           :onchange => "updateSlider(this.value)",
-                           :step => "5", :type => "range"}
-        %br
+    .image_diag
+      .value_block
+        %h2.down#chosen_value{:title => "Value scale"} Set value: 50
+
+      .row.percentage
+        .col-md-6
+          %p.left 5%
+        .col-md-6
+          %p.right 100%
+
+      #slider
+        %input.slide#slide{:max => "100", :min => "5", :value => "50",
+                         :onchange => "updateValue(this.value)",
+                         :step => "5", :type => "range"}
+      %br
+
+      %button.btn.button__results.save{:title => "Save image diag results"}
+        %a{"data-remote" => "true", :format => "js", :href => "#", :title => "Save image diag results"} Save value

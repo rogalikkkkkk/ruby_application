@@ -1,14 +1,17 @@
-$('.image .image_display .image_diag').css({"display": "none"});
-$('.img-left-side').css({"display": "none"});
-$('.img-right-side').css({"display": "none"});
+window.addEventListener('load', () => {
+    $('.image_diag').css({"display": "none"});
+    $('.img-left-side').css({"display": "none"});
+    $('.img-right-side').css({"display": "none"});
+})
 
+    console.log('sdasdfsadfasdfasdfasdfasdfasdfasdfasdfasdfasd');
 // to check whether the target is the content-area itself or a child of the content-area.
 
 
 $(document).click(function (e) {
     if ($(e.target).is(".select_theme") ||
         $(e.target).closest(".select_theme").length) {
-        console.log(": In doc.click = IN side content area");
+        console.log(": In doc.click = IN side content area111");
     } else {
         console.log(": In doc.click = OUT side content area");
         $('.form_select').css({"display": "none"});

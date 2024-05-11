@@ -7,3 +7,8 @@
 //= require jquery_ujs
 //= require_tree .
 
+window.addEventListener('load', () => {
+    $('.image_diag').css({"display": "none"});
+    $('.img-left-side').css({"display": "none"});
+    $('.img-right-side').css({"display": "none"});
+})
