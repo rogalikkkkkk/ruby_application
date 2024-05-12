@@ -1,6 +1,7 @@
 class Image < ApplicationRecord
 
   belongs_to :theme
+  has_many :value
 
   # get images array of arrays by given theme_id
   scope :theme_images, -> (theme_id) {

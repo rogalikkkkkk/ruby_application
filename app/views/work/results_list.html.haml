@@ -1,0 +1,34 @@
+%div.table
+
+
+:javascript
+    fetch('/results_list', {
+      headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+    }).then(res => res.json()).then((images) => {
+      let result = ` <div class="image title">
+          <span class="name">Car name</span>
+          <span class="name">Image</span>
+          <span class="name">Theme</span>
+          <span class="name">User value</span>
+          <span class="name">AVG Score</span>
+        </div>`
+
+      const table = document.querySelector('.table')
+      console.log(images)
+
+      for (image of images){
+        result += `<div class="image">
+          <span class="name">${image.name}</span>
+          <img src=${image.file} class="img">
+          <span class="name">${image.theme}</span>
+          <span class="name">${image.userValue}</span>
+          <span class="name">${image.imageAvgValue}</span>
+        </div>`
+      }
+
+      table.innerHTML = result;
+    })
+

@@ -1,6 +1,7 @@
 class Value < ApplicationRecord
 
   belongs_to :user
+  belongs_to :image
 
   scope :all_values_by_user, -> (user_id) {
     user = User.find(user_id)
