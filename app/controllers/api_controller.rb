@@ -86,7 +86,7 @@ class ApiController < ApplicationController
   def save_value
     user_score = params[:value].to_i
     new_score_info = { user_id: current_user.id, image_id: params[:image_id].to_i, value: user_score }
-    new_info = Image.value_and_update(new_score_info)
+    new_info = Image.update_values(new_score_info)
 
     respond_to do |format|
       if user_score.blank?
