@@ -83,26 +83,26 @@ class ApiController < ApplicationController
   end
 
   def save_value
-    value = params[:value].to_i
-    new_value_data = { user_id: current_user.id, image_id: params[:image_id].to_i, value: value }
-    valued_image_data = Image.value_and_update(new_value_data)
+    user_score = params[:value].to_i
+    new_score_info = { user_id: current_user.id, image_id: params[:image_id].to_i, value: user_score }
+    new_info = Image.value_and_update(new_score_info)
 
     respond_to do |format|
-      if value.blank?
+      if user_score.blank?
         format.html { render nothing: true, status: :unprocessable_entity }
       else
         format.json { render json:  {
-          user_value:       value,
-          values_qty:       valued_image_data[:values_qty],
-          image_id:         valued_image_data[:image_id],
-          user_valued:      valued_image_data[:user_valued],
-          common_ave_value: valued_image_data[:common_ave_value],
-          value:            valued_image_data[:value],
+          user_value:       user_score,
+          values_qty:       new_info[:values_qty],
+          image_id:         new_info[:image_id],
+          value:            new_info[:value],
+          user_valued:      new_info[:user_valued],
+          common_ave_value: new_info[:common_ave_value],
           status:           :successfully,
           notice:           'Successfully saved'}
         }
       end
     end
 
-  end
+  end 
 end
