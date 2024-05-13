@@ -23,7 +23,6 @@ class WorkController < ApplicationController
     respond_to :js
   end
 
-  # @note: first display_theme and show first image from image array
   def display_theme
     logger.info "In work#display_theme"
     @image_data = {}
@@ -47,23 +46,6 @@ class WorkController < ApplicationController
 
     image_data(theme, data)
   end
-
-  def get_stats
-    @selected_theme_id = session[:selected_theme_id]
-
-    current_user_id = current_user.id
-    res_composite_diag = Image.joins(:value)
-      .select("images.name, images.created_at, images.file, values.value as user_value, values.created_at as mark_date, images.ave_value")
-      .where("images.theme_id = :theme_id AND values.user_id = :user_id AND value <= images.ave_value + 25 AND value >= images.ave_value - 25", { theme_id: @selected_theme_id, user_id: current_user_id } )
-      .order("value DESC")
-    Rails.logger.info res_composite_diag
-    composite_results_size = res_composite_diag.size
-
-    @composite_results = res_composite_diag.take(composite_results_size)
-    @composite_results_paged = pages_of(@composite_results, 10)
-  end
-
-
 
   def results_list
     helpers = ActionController::Base.helpers

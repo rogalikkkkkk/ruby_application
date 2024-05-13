@@ -3,7 +3,6 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    Rails.logger.info "IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII"
     @users = User.all
   end
 
@@ -13,7 +12,6 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    Rails.logger.info "IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII3"
     @user = User.new
   end
 
@@ -23,8 +21,6 @@ class UsersController < ApplicationController
 
   # POST /users or /users.json
   def create
-    Rails.logger.info "IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII56555"
-
     @user = User.new(user_params)
 
     respond_to do |format|
