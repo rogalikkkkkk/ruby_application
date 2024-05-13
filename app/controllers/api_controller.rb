@@ -70,6 +70,7 @@ class ApiController < ApplicationController
       end
     end
   end
+
   def next_index(index, length)
     new_index = index
     index < length - 1 ? new_index += 1 : new_index = 0
@@ -91,18 +92,17 @@ class ApiController < ApplicationController
       if user_score.blank?
         format.html { render nothing: true, status: :unprocessable_entity }
       else
-        format.json { render json:  {
-          user_value:       user_score,
-          values_qty:       new_info[:values_qty],
-          image_id:         new_info[:image_id],
-          value:            new_info[:value],
-          user_valued:      new_info[:user_valued],
+        format.json { render json: {
+          user_value: user_score,
+          user_valued: new_info[:user_valued],
           common_ave_value: new_info[:common_ave_value],
-          status:           :successfully,
-          notice:           'Successfully saved'}
+          value: new_info[:value],
+          values_qty: new_info[:values_qty],
+          image_id: new_info[:image_id],
+        }
         }
       end
     end
 
-  end 
+  end
 end
