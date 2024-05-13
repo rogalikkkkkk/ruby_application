@@ -161,45 +161,32 @@ $('.img-left-side').click(function (event) {
 });
 
 // AJAX call to next image list
-$('button.button__results.save').unbind( "click" ).click(function(event) {
-    console.log("clicked: button__results.save: ");
+$('button.button_save').unbind( "click" ).click(function(event) {
     event.stopImmediatePropagation();
-    var displayValue = document.getElementById('chosen_value').innerHTML.split(' ')[2];
-    console.log("displayValue = " + displayValue );
+    var valueFromCite = document.getElementById('chosen_value').innerHTML.split(' ')[2];
 
     $.ajax({
         type: "get",
         url: "api/save_value",
         data: { image_id: oneImageId,
             theme_id: selectedThemeId,
-            value: displayValue
+            value: valueFromCite
         },
         dataType: 'json'
     }).done(function (data_return) {
-        console.log("success1c:  " + data_return.notice );
         var userImageValue = data_return.user_value;
-        $('.value').append().html(userImageValue);
+        $('.value').append().html(userImageValue).css({"display": "block"});
 
-        var userValuedFlag = data_return.user_valued;
-        if(userValuedFlag === 1){
-            console.log("5 IN IF: userValuedFlag == true? == " + userValuedFlag);
-            $('span.common_value').css({"display": "block"});
-            $('.image_diag').css({"display": "none"});
+        $('span.common_value').css({"display": "block"});
+        $('.image_diag').css({"display": "none"});
 
-            var valuesQty = data_return.values_qty;
-            $('span.total_values h2.total').append().html(valuesQty);
+        var totalValues = data_return.values_qty;
+        $('span.total_values h2.total').append().html(totalValues);
 
-            var imageCommonValue = data_return.common_ave_value;
-            console.log("6 IN save_value: imageCommonValue = " + imageCommonValue);
-            $('span.common_value h2.common').append().html(imageCommonValue);
+        var aveValue = data_return.common_ave_value;
+        $('span.common_value h2.common').append().html(aveValue);
 
-            $('.user_value').css({"display": "block"});
-            $('.value').css({"display": "block"});
-        }else{
-            $('span.common_value').css({"display": "none"});
-            console.log("7 IN ELSE: save_value userValuedImage == false? == " + userValuedFlag);
-            $('.image_diag').css({"display": "block"});
-        }
+        $('.user_value').css({"display": "block"});
     })
       .fail(function (data_return) {
           console.log("error: data_return = " + data_return);
