@@ -74,8 +74,6 @@ class WorkController < ApplicationController
       format.json { render json: image_stats }
     end
 
-
   end
-
 
 end
