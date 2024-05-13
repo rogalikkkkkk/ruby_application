@@ -16,7 +16,7 @@
         %li= link_to t('.sign_out'), signout_path
         %li.logged
           = current_user.email
-          %img{ src: "https://secure.gravatar.com/avatar/#{Digest::MD5.hexdigest('sea77030@gmail.com')}.png", style: "width: 25px;" }
+          %img{ src: "https://secure.gravatar.com/avatar/#{Digest::MD5.hexdigest(current_user.email)}.png", style: "width: 25px;" }
       - else
         %li= link_to t('.sign_in'), signin_path
 
